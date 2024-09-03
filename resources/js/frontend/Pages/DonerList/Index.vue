@@ -4,8 +4,22 @@
             <div class="common_title text-center">
                 <h2>our doner list</h2>
             </div>
-            <div>
-                <input type="text" class="form-control" name="" id="" />
+            <div class="d-flex my-3 gap-3">
+                <input
+                    type="text"
+                    class="form-control  "
+                    name=""
+                    id=""
+                    placeholder="Enter your location"
+                />
+                <select class="form-select" name="" id="">
+                    <option value="">Select Blood Group</option>
+                    <template v-for="item in blood_group_data" :key="item.id">
+                        <option :value="item.id">
+                            {{ item.name }}
+                        </option>
+                    </template>
+                </select>
             </div>
             <template v-for="item in all_data.data" :key="item">
                 <div class="col-lg-3 col-md-4 col-sm-6 col-12 my-2">
@@ -17,7 +31,7 @@
                             />
                         </div>
                         <h3 class="profile-name">{{ item.name ?? "N/A" }}</h3>
-                        <table class="table table-bordered">
+                        <table class="table table-bordered mt-4">
                             <thead>
                                 <tr>
                                     <th>Blood Group</th>
@@ -33,7 +47,39 @@
                                     <th>Phone</th>
                                     <th>:</th>
                                     <th>
-                                        {{ item.user_details?.phone_numbers?.map(item => item.number).join(", ") ?? "N/A" }}
+                                        {{
+                                            item.user_details?.phone_numbers
+                                                .length
+                                                ? item.user_details
+                                                      .phone_numbers[0].number
+                                                : "N/A"
+                                        }}
+                                        <span
+                                            v-if="
+                                                item.user_details?.phone_numbers
+                                                    .length > 1
+                                            "
+                                            :title="
+                                                item.user_details?.phone_numbers
+                                                    .map((item) => item.number)
+                                                    .join(',')
+                                            "
+                                            class="tooltip-container"
+                                        >
+                                            <i
+                                                class="fa fa-eye text-success"
+                                            ></i>
+                                            <span class="tooltip-text">
+                                                {{
+                                                    item.user_details?.phone_numbers
+                                                        .map(
+                                                            (item) =>
+                                                                item.number
+                                                        )
+                                                        .join(",")
+                                                }}
+                                            </span>
+                                        </span>
                                     </th>
                                 </tr>
                             </thead>
@@ -66,6 +112,7 @@ export default {
     created: async function () {
         await this.get_all_blood_donor_list();
         await this.get_all_divisions();
+        await this.get_all_blood_groups();
     },
     methods: {
         ...mapActions(doner_list_setup_store, {
@@ -123,7 +170,6 @@ export default {
     border-radius: 5px;
     text-align: center;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.7);
-    user-select: none;
 }
 
 #donerList .cover-photo {
@@ -138,7 +184,7 @@ export default {
 #donerList .profile {
     position: absolute;
     width: 120px;
-    bottom: -60px;
+    bottom: -30px;
     left: 15px;
     border-radius: 50%;
     border: 2px solid #222;
@@ -148,8 +194,10 @@ export default {
 
 #donerList .profile-name {
     font-size: 20px;
-    margin: 25px 0 0 120px;
+    margin: 7px 0 0 120px;
     color: #fff;
+    position: absolute;
+    right: 25px;
 }
 
 #donerList .about {
@@ -201,5 +249,34 @@ export default {
 
 #donerList .icons i:hover {
     color: #7ce3ff;
+}
+
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip-container .tooltip-text {
+    visibility: hidden;
+    width: auto;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
 }
 </style>

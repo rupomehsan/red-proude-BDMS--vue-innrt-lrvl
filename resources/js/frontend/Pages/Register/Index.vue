@@ -59,6 +59,44 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for=""
+                                                        >Enter your email</label
+                                                    >
+                                                    <div class="mt-1 mb-3">
+                                                        <input
+                                                            class="form-control form-control-square mb-2"
+                                                            type="text"
+                                                            v-model="
+                                                                user_info.email
+                                                            "
+                                                            id="email"
+                                                            name="email"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for=""
+                                                        >Enter your
+                                                        password</label
+                                                    >
+                                                    <div class="mt-1 mb-3">
+                                                        <input
+                                                            class="form-control form-control-square mb-2"
+                                                            type="password"
+                                                            v-model="
+                                                                user_info.password
+                                                            "
+                                                            id="password"
+                                                            name="password"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
@@ -526,46 +564,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for=""
-                                                        >Enter your email</label
-                                                    >
-                                                    <div class="mt-1 mb-3">
-                                                        <input
-                                                            class="form-control form-control-square mb-2"
-                                                            type="text"
-                                                            v-model="
-                                                                user_info.email
-                                                            "
-                                                            id="email"
-                                                            name="email"
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for=""
-                                                        >Enter your
-                                                        password</label
-                                                    >
-                                                    <div class="mt-1 mb-3">
-                                                        <input
-                                                            class="form-control form-control-square mb-2"
-                                                            type="password"
-                                                            v-model="
-                                                                user_info.password
-                                                            "
-                                                            id="password"
-                                                            name="password"
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
                                         <div
                                             class="d-flex align-items-center justify-content-center"
@@ -654,7 +652,7 @@ export default {
             let response = await this.store_data($event.target, aditionalData);
             if (response.data.status === "success") {
                 window.s_alert(response.data.message);
-                this.$router.push({ name: `All${this.route_prefix}` });
+                this.$inertia.visit("blood-doner-list");
             }
         },
 
