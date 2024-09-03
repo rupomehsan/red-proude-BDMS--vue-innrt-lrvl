@@ -16,6 +16,8 @@ class UserDetailsModel extends EloquentModel
         'phone' => 'array'
     ];
 
+    static $bloodGroupModel = \App\Modules\BloodManagement\BloodGroup\Models\Model::class;
+
     protected static function booted()
     {
         static::created(function ($data) {
@@ -40,5 +42,9 @@ class UserDetailsModel extends EloquentModel
     public function getPhoneNumbersAttribute()
     {
         return  json_decode($this->phone);
+    }
+    public function blood_group()
+    {
+        return $this->belongsTo(self::$bloodGroupModel, 'blood_group_id');
     }
 }

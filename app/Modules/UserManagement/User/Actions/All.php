@@ -14,7 +14,7 @@ class All
             $orderByType = request()->input('sort_type') ?? 'asc';
             $status = request()->input('status') ?? 'active';
             $fields = request()->input('fields') ?? "*";
-            $with = [];
+            $with = ['user_details', 'user_address_details','user_details.blood_group'];
             $condition = [];
 
             $data = self::$model::query()->where('role_id',2);

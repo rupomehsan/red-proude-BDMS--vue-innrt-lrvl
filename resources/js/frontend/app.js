@@ -6,8 +6,7 @@ import { createInertiaApp, Link,Head } from "@inertiajs/vue3";
 import { createPinia } from "pinia";
 
 import Layout from "./Shared/Layout.vue";
-import ProductGrid from "./Pages/Product/ProductGrid.vue";
-import ProductGridFlex from "./Pages/Product/ProductGridFlex.vue";
+
 
 
 const pinia = createPinia();
@@ -28,8 +27,6 @@ createInertiaApp({
         app.use(pinia);
         app.component("Link", Link);
         app.component("Head", Head);
-        app.component("ProductGrid", ProductGrid);
-        app.component("ProductGridFlex", ProductGridFlex);
         app.mount(el);
     },
 

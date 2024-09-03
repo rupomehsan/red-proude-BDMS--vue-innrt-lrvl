@@ -11,10 +11,13 @@ use Inertia\Inertia;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+Route::get('/', [\App\Http\Controllers\FrontendController::class, 'homePage'])->name('home.index');
+Route::get('/blood-register', [\App\Http\Controllers\FrontendController::class, 'registerPage'])->name('registerPage');
+Route::get('/blood-doner-list', [\App\Http\Controllers\FrontendController::class, 'DonerListPage'])->name('DonerListPage');
+Route::get('/blogs', [\App\Http\Controllers\FrontendController::class, 'BlogPage'])->name('BlogPage');
 
 
-// Route::get('/login', [\App\Http\Controllers\LoginController::class, 'index'])->name('login.index');
+Route::get('/login', [\App\Http\Controllers\FrontendController::class, 'login'])->name('login.index');
 
 /*
 |--------------------------------------------------------------------------

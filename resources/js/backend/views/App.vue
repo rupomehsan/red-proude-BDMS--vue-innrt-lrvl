@@ -60,9 +60,9 @@ export default {
     }),
     created: async function () {
 
-        if (!window.localStorage.getItem("token")) {
-            window.location.href = window.location.origin;
-        }
+        // if (!window.localStorage.getItem("token")) {
+        //     window.location.href = window.location.origin;
+        // }
         // await this.check_is_auth();
 
     },

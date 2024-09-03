@@ -12,6 +12,7 @@ class Model extends EloquentModel
 
     static $userDetailsModel = \App\Modules\UserManagement\User\Models\UserDetailsModel::class;
     static $userAddressDetailsModel = \App\Modules\UserManagement\User\Models\UserAddressDetailsModel::class;
+ 
 
     protected static function booted()
     {
@@ -42,4 +43,5 @@ class Model extends EloquentModel
     {
         return $this->hasMany(self::$userAddressDetailsModel, 'user_id');
     }
+
 }

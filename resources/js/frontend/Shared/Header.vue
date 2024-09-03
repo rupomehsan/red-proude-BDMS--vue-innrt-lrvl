@@ -1,347 +1,84 @@
 <template>
     <!-- header start -->
+    <!--preloader start-->
+    <div class="preloader" style="display: none">
+        <h1>Blad Ai</h1>
+        <div class="preload-progress">
+            <span></span>
+        </div>
+    </div>
+    <!--preloader end-->
+
+    <!-- scroll to top -->
+    <div class="progress-wrap cursor-pointer">
+        <svg
+            class="progress-circle svg-content"
+            width="100%"
+            height="100%"
+            viewBox="-1 -1 102 102"
+        >
+            <path
+                d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+                style="
+                    transition: stroke-dashoffset 10ms linear;
+                    stroke-dasharray: 307.919, 307.919;
+                    stroke-dashoffset: 307.919;
+                "
+            ></path>
+        </svg>
+    </div>
+    <!-- scroll to top -->
+
+    <!-- header start -->
     <header>
-        <div class="header-top-area bb d-none d-lg-block pbg">
-            <div class="container-fluid">
-                <div class="row justify-content-between">
-                    <div class="col-lg-6">
-                        <p class="h2-color text-center text-white">
-                            Wellcome to Satrany store!
-                        </p>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="header-top-right">
-                            <div class="account-menu text-white">
-                                <ul>
-                                    <!-- <li>
-                    <Link href="/profile" class="text-white">My Account</Link>
-                  </li> -->
-
-                                    <li>
-                                        <Link href="/cart" class="text-white"
-                                            >Shopping Cart</Link
-                                        >
-                                    </li>
-                                    <li>
-                                        <Link
-                                            href="/wishlist"
-                                            class="text-white"
-                                            >Wishlist</Link
-                                        >
-                                    </li>
-                                    <li>
-                                        <Link
-                                            href="/compare-list"
-                                            class="text-white"
-                                            >Compare list</Link
-                                        >
-                                    </li>
-                                    <li>
-                                        <Link href="/login" class="text-white"
-                                            >Login</Link
-                                        >
-                                    </li>
-                                </ul>
-                            </div>
+        <div class="header_top d-none d-lg-block d-xl-block d-xxl-block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3">
+                        <div class="header_top_content">
+                            <span><i class="fa-solid fa-phone"></i></span>
+                            <a href="tel:01977259912">+01 (977) 2599 12</a>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <div class="container-fluid">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-lg-3 col-5">
-                        <div class="logo m-0">
-                            <Link href="/" class="d-flex align-items-center">
-                                <img
-                                    src="/frontend/assets/images/logo/logo.png"
-                                    alt=""
-                                    class="rounded-circle img-fluid my-1"
-                                    height="100"
-                                    width="100"
-                                />
-                                <span class="logo-title">Satrani </span>
-                            </Link>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 d-none d-lg-block">
-                        <div
-                            class="home3-mainmenu mainmenu home3-hover dropdown m-0"
-                        >
-                            <nav>
-                                <ul class="menu-list">
-                                    <li>
-                                        <Link
-                                            href="/"
-                                            :class="{
-                                                'active-link':
-                                                    $page.url === '/',
-                                            }"
-                                            >Home
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link
-                                            :class="{
-                                                'active-link':
-                                                    $page.url === '/about-us',
-                                            }"
-                                            href="/about-us"
-                                            >About Us</Link
-                                        >
-                                    </li>
-                                    <li>
-                                        <Link
-                                            :class="{
-                                                'active-link':
-                                                    $page.url ===
-                                                    '/terms-and-conditions',
-                                            }"
-                                            href="/terms-and-conditions"
-                                            >Terms & Conditions</Link
-                                        >
-                                    </li>
-                                    <li>
-                                        <Link
-                                            :class="{
-                                                'active-link':
-                                                    $page.url ===
-                                                    '/return-and-refund',
-                                            }"
-                                            href="/return-and-refund"
-                                            >Return & Refund</Link
-                                        >
-                                    </li>
-                                    <li>
-                                        <Link
-                                            :class="{
-                                                'active-link':
-                                                    $page.url === '/contact-us',
-                                            }"
-                                            href="/contact-us"
-                                            >Contact us</Link
-                                        >
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-2 col-lg-3 col-7 d-lg-none">
-                        <div class="header-actions">
-                            <div class="top-cart home3-bg ">
-                                <div class="cart">
-                                    <i class="icofont icofont-bag"></i>
-                                    <a href="#" class="">
-                                        {{ all_cart_data.length }} Items -
-                                        <strong class=""
-                                            >{{ total_cart_price }} ৳</strong
-                                        >
-                                        <i
-                                            class="icofont icofont-rounded-down"
-                                        ></i>
-                                    </a>
-                                </div>
-                                <ul class="px-3">
-                                    <li>
-                                        <div class="cart-items">
-                                            <div
-                                                class="cart-item bb mt-10"
-                                                v-for="cart in all_cart_data"
-                                            >
-                                                <div class="cart-img">
-                                                    <a href="#">
-                                                        <img
-                                                            :src="
-                                                                cart.product
-                                                                    ?.images
-                                                                    .length
-                                                                    ? cart
-                                                                          .product
-                                                                          ?.images[0]
-                                                                          .url
-                                                                    : 'dummy.png'
-                                                            "
-                                                            alt=""
-                                                        />
-                                                    </a>
-                                                </div>
-                                                <div class="cart-content">
-                                                    <a
-                                                        :href="`product-details/${cart.product?.slug}`"
-                                                        >{{
-                                                            cart.product?.title
-                                                        }}</a
-                                                    >
-                                                    <a
-                                                        @click="
-                                                            removeFromCart(
-                                                                cart.id
-                                                            )
-                                                        "
-                                                        class="pull-right cart-remove"
-                                                        role="button"
-                                                    >
-                                                        <i
-                                                            class="fa fa-times"
-                                                        ></i>
-                                                    </a>
-                                                    <span
-                                                        >{{ cart.quantity }} x
-                                                        {{
-                                                            cart.product?.current_price
-                                                        }}
-                                                        =
-                                                        {{
-                                                            cart.quantity *
-                                                            cart.product?.current_price
-                                                        }}
-                                                        ৳</span
-                                                    >
-                                                </div>
-                                            </div>
-                                            <div class="cart-btn my-3 mx-auto">
-                                                <a href="cart">view cart</a>
-                                                <a href="checkout">Checkout</a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <button
-                                class="action-toggle d-lg-none"
-                                data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasMenu"
+                    <div class="col-xl-3 col-lg-3">
+                        <div class="header_top_content">
+                            <span><i class="fa-solid fa-envelope"></i></span>
+                            <a href="mailto:company@domin.com"
+                                >company@domin.com</a
                             >
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </button>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="header-bottom home3-bg" id="HeaderTopCards">
-            <div class="container-fluid">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-xl-2 col-lg-3 d-none d-lg-block">
-                        <div class="position-relative">
-                            <div
-                                class="categories-menu text-uppercase home3-bg2 home3-categories-menu click"
-                                @click="is_home = !is_home"
-                            >
-                                <i class="fa fa-list-ul"></i>
-                                <span>All Categories</span>
-                            </div>
-                            <div
-                                class="menu-container home3-menu-container home3-hover toggole"
-                                :class="is_home ? 'd-block' : 'd-none'"
-                            >
-                                <ul>
-                                    <li
-                                        v-for="category in $page.props
-                                            .categories"
-                                    >
-                                        <a
-                                            :href="`products?category=${category.slug}`"
-                                        >
-                                            <i class="fa fa-star"></i>
-                                            {{ category.title }}
-                                        </a>
-                                    </li>
-                                    <!-- <li>
-                                        <a href="#">
-                                            <i class="fa fa-plus-square-o"></i>
-                                            More Categories
-                                        </a>
-                                    </li> -->
-                                </ul>
-                            </div>
+                    <div class="col-xl-3 col-lg-3">
+                        <div class="header_top_content">
+                            <span
+                                ><i class="fa-solid fa-location-dot"></i
+                            ></span>
+                            <a href="#">3146 Koontz Lane, USA</a>
                         </div>
                     </div>
-                    <div class="col-xl-5 col-lg-4">
-                        <div class="search-box home3-search-box">
-                            <form @submit.prevent="searchHandler">
-                                <input
-                                    type="text"
-                                    placeholder="Search Products…"
-                                    v-model="search"
-                                />
-                                <button><i class="fa fa-search"></i></button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 d-none d-lg-block">
-                        <div class="top-cart home3-top-cart home3-bg bg-5">
-                            <div class="cart">
-                                <i class="icofont icofont-bag"></i>
-                                <a href="#" class="mx-2">
-                                    {{ all_cart_data.length }} Items -
-                                    <strong class="mx-2"
-                                        >{{ total_cart_price }} ৳</strong
-                                    >
-                                    <i class="icofont icofont-rounded-down"></i>
-                                </a>
-                            </div>
-                            <ul class="px-3">
+                    <div class="col-xl-3 col-lg-3">
+                        <div class="header_top_social">
+                            <p>Follow Now</p>
+                            <ul class="d-flex">
                                 <li>
-                                    <div class="cart-items">
-                                        <div
-                                            class="cart-item bb mt-10"
-                                            v-for="cart in all_cart_data"
-                                        >
-                                            <div class="cart-img">
-                                                <a href="#">
-                                                    <img
-                                                        :src="
-                                                            cart.product?.images
-                                                                .length
-                                                                ? cart.product
-                                                                      ?.images[0]
-                                                                      .url
-                                                                : 'dummy.png'
-                                                        "
-                                                        alt=""
-                                                    />
-                                                </a>
-                                            </div>
-                                            <div class="cart-content">
-                                                <a
-                                                    :href="`product-details/${cart.product?.slug}`"
-                                                    >{{
-                                                        cart.product?.title
-                                                    }}</a
-                                                >
-                                                <a
-                                                    @click="
-                                                        removeFromCart(cart.id)
-                                                    "
-                                                    class="pull-right cart-remove"
-                                                    role="button"
-                                                >
-                                                    <i class="fa fa-times"></i>
-                                                </a>
-                                                <span
-                                                    >{{ cart.quantity }} x
-                                                    {{ cart.product?.current_price }}
-                                                    =
-                                                    {{
-                                                        cart.quantity *
-                                                        cart.product?.current_price
-                                                    }}
-                                                    ৳</span
-                                                >
-                                            </div>
-                                        </div>
-                                        <div class="cart-btn my-3 mx-auto">
-                                            <a href="cart">view cart</a>
-                                            <a href="checkout">Checkout</a>
-                                        </div>
-                                    </div>
+                                    <a href="#"
+                                        ><i class="fa-brands fa-facebook-f"></i
+                                    ></a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        ><i class="fa-brands fa-twitter"></i
+                                    ></a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        ><i class="fa-brands fa-instagram"></i
+                                    ></a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        ><i class="fa-brands fa-pinterest-p"></i
+                                    ></a>
                                 </li>
                             </ul>
                         </div>
@@ -349,76 +86,155 @@
                 </div>
             </div>
         </div>
+        <div class="header_bottom">
+            <div class="container">
+                <div class="row align-items-center position-relative">
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-6">
+                        <div class="header_logo">
+                            <Link
+                                href="/"
+                                class="text-decoration-none text-black"
+                            >
+                                <h3>RedProude</h3>
+                            </Link>
+                        </div>
+                    </div>
+                    <div
+                        class="col-xl-8 col-lg-8 d-none d-xxl-block d-xl-block"
+                    >
+                        <ul class="main_menu">
+                            <li>
+                                <Link href="blood-doner-list">Doner Lists</Link>
+                            </li>
+                            <li><Link href="blogs">Blogs</Link></li>
+                            <li><Link href="blood-register">Register</Link></li>
+                            <li><Link href="login">Login</Link></li>
+                        </ul>
+                    </div>
+                    <div
+                        class="col-xl-2 col-lg-2 d-none d-xxl-block d-xl-block"
+                    >
+                        <div class="header_search_menu d-flex">
+                            <div class="dropdown dropdown_search">
+                                <button
+                                    class="search-btn"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="true"
+                                >
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </button>
+                                <div
+                                    class="dropdown-menu dropdown-menu-end"
+                                    data-popper-placement="bottom-end"
+                                >
+                                    <form
+                                        class="search-form d-flex align-items-center gap-2"
+                                    >
+                                        <input
+                                            type="text"
+                                            placeholder="Search..."
+                                            class="theme-input bg-transparent"
+                                        />
+                                        <button
+                                            type="submit"
+                                            class="submit-btn"
+                                        >
+                                            Go
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- right offcanvas -->
+                            <div class="offcanvas_right">
+                                <button
+                                    class="header_toggle_btn bg-transparent offcanvas_btn"
+                                    type="button"
+                                    data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasRight"
+                                    aria-controls="offcanvasRight"
+                                >
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- mobile menu bar -->
+                    <div
+                        class="col-lg-10 col-md-8 col-6 d-block d-xxl-none d-xl-none"
+                    >
+                        <div
+                            class="d-flex align-items-center gap-2 justify-content-end"
+                        >
+                            <div class="dropdown dropdown_search">
+                                <button
+                                    class="search-btn"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="true"
+                                >
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </button>
+                                <div
+                                    class="dropdown-menu dropdown-menu-end"
+                                    data-popper-placement="bottom-end"
+                                >
+                                    <form
+                                        class="search-form d-flex align-items-center gap-2"
+                                    >
+                                        <input
+                                            type="text"
+                                            placeholder="Search..."
+                                            class="theme-input bg-transparent"
+                                        />
+                                        <button
+                                            type="submit"
+                                            class="submit-btn"
+                                        >
+                                            Go
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="mobile_menu">
+                                <button
+                                    class="header_toggle_btn bg-transparent border-0"
+                                    type="button"
+                                    data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvas-mobile"
+                                >
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
+    <!-- header end -->
     <!-- header end -->
 </template>
 
 <script>
-import { mapActions, mapState } from "pinia";
-import { common_page_store } from "./Store/index";
 export default {
     data: () => ({
         is_home: true,
         search: "",
     }),
-    created: async function () {
-        try {
-            let location = window.location.pathname;
-            if (location !== "/") {
-                this.is_home = false;
-            }
-        } catch (error) {
-            console.error("Error  created hook:", error);
-        }
+    created: async function () {},
 
-        await this.get_all_cart_data();
-        await this.get_all_categories();
-        await this.visitor_count();
-    },
-
-    methods: {
-        ...mapActions(common_page_store, {
-            get_all_cart_data: "get_all_cart_data",
-            get_all_categories: "get_all_categories",
-            remove_cart_item: "remove_cart_item",
-        }),
-        removeFromCart: async function (cartId) {
-            let response = await this.remove_cart_item(cartId);
-            if (response.data.status == "success") {
-                window.s_alert(response.data.message);
-                await this.get_all_cart_data();
-            }
-        },
-        searchHandler: function () {
-            window.location.href = `products?search=${this.search}`;
-        },
-        visitor_count: async function () {
-            let response = await axios.get(`/visitor-count`);
-            response = response.data.data;
-        },
-    },
-    computed: {
-        ...mapState(common_page_store, {
-            all_cart_data: "all_cart_data",
-            total_cart_price: "total_cart_price",
-        }),
-    },
-
-    // computed: {
-    //     all_cart_data() {
-    //         return this.$page.props.cartItems?.original?.data;
-    //     },
-    // },
+    methods: {},
+    computed: {},
 };
 </script>
 
 <style scoped>
-@media (max-width: 575.98px) {
-    .d-custom-sm-none {
-        display: none !important;
-    }
-    .header-actions {
-    margin-top: 0px;
-}
+header {
+    border-bottom: 1px solid #8080801f;
 }
 </style>

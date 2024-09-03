@@ -43,10 +43,12 @@ class Validation extends FormRequest
     {
         return [
             'name' => 'required | sometimes',
-            // 'email' => 'required | sometimes',
-            // 'phone' => 'required | sometimes',
-            // 'password' => 'required | sometimes',
-            // 'role_id' => 'required | sometimes',
+            'date_of_birth' => 'required | sometimes',
+            'blood_group_id' => 'required | sometimes',
+            'gender' => 'required | sometimes',
+            'religion' => 'required | sometimes',
+            'email' => 'required | sometimes',
+            'password' => 'required | sometimes',
             'status' => ['sometimes', Rule::in(['active', 'inactive'])],
         ];
     }
