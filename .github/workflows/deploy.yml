@@ -18,9 +18,10 @@ jobs:
           port: 22
           script: |
             # Navigate to project directory
-            cd /www/wwwroot/cicdtest.techparkit.org/red-proude-BDMS--vue-innrt-lrvl
+            cd /www/wwwroot/cicdtest.techparkit.org/
 
             # Pull the latest code
+            git clone https://github.com/rupomehsan/red-proude-BDMS--vue-innrt-lrvl.git .
             git pull origin main
 
             # Install dependencies and build the project
