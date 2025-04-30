@@ -23,6 +23,6 @@ jobs:
             # Pull the latest code
             git pull origin main
 
-            # Install dependencies and build the project
-            npm install
-            npm run build
+            # # Install dependencies and build the project
+            # npm install
+            # npm run build
