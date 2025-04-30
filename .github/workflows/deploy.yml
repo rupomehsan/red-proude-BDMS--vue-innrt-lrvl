@@ -21,7 +21,6 @@ jobs:
             cd /www/wwwroot/testcicd.techparkit.org
 
             # Pull the latest code
-            git clone https://github.com/rupomehsan/red-proude-BDMS--vue-innrt-lrvl.git .
             git pull origin main
 
             # Install dependencies and build the project
