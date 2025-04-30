@@ -1,0 +1,28 @@
+name: Blood  Management
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy using ssh
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: 22
+          script: |
+            # Navigate to project directory
+            cd /www/wwwroot/cicdtest.techparkit.org
+
+            # Pull the latest code
+            git pull origin main
+
+            # Install dependencies and build the project
+            npm install
+            npm run build
